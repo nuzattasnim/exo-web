@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+import { Calendar, Home, Inbox, Search, Settings, Music } from "lucide-react";
 
 import {
 	Sidebar,
@@ -40,6 +40,11 @@ const items = [
 		title: "Settings",
 		url: "#",
 		icon: Settings,
+	},
+	{
+		title: "K-Pop Songs",
+		url: "/kpop",
+		icon: Music,
 	},
 ];
 
