@@ -221,6 +221,7 @@ function SeatsContent({
 				open={isBookingFormModalOpen}
 				setOpen={setIsBookingFormModalOpen}
 				busId={currentBus?.busid as string}
+				busName={currentBus?.busname as string}
 				rowIndex={selectedSeat.rowIndex}
 				colIndex={selectedSeat.colIndex}
 				time={currentBus?.time as string}
