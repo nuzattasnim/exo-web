@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useBuses } from "@/hooks/use-buses";
 import { useSearchParams } from "next/navigation";
 import {
@@ -14,7 +14,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookingFormModal } from "@/components/seats-ui/booking-form-modal";
 import BookedSeatModal from "@/components/seats-ui/booked-seat-modal";
 
-export default function SeatsPage({
+function SeatsContent({
 	readonly: propReadonly = false,
 }: {
 	readonly?: boolean;
@@ -254,5 +254,15 @@ export default function SeatsPage({
 				)}
 			/>
 		</div>
+	);
+}
+
+export default function SeatsPage(props: { readonly?: boolean }) {
+	return (
+		<Suspense
+			fallback={<div className="p-10">Loading search params...</div>}
+		>
+			<SeatsContent {...props} />
+		</Suspense>
 	);
 }
