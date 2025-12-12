@@ -73,12 +73,9 @@ export default function AdminPage() {
 									<SelectValue placeholder="Select a Bus" />
 								</SelectTrigger>
 								<SelectContent>
-									{BUS_NAMES.map((bus) => (
-										<SelectItem
-											key={bus.id}
-											value={bus.name}
-										>
-											{bus.name}
+									{BUS_NAMES.map((busName, index) => (
+										<SelectItem key={index} value={busName}>
+											{busName}
 										</SelectItem>
 									))}
 								</SelectContent>

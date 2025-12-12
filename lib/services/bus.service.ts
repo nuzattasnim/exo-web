@@ -17,8 +17,8 @@ export interface BookedSeat {
 }
 
 const STORAGE_KEYS = {
-  BUSES: "exo_buses_v2",
-  BOOKED: "exo_booked_seats_v2",
+  BUSES: "exo_buses_v3",
+  BOOKED: "exo_booked_seats_v3",
 };
 
 export class BusService {
@@ -33,11 +33,11 @@ export class BusService {
     let idCounter = 1;
 
     // Generate a bus for EVERY combination of Bus Name and Time
-    BUS_NAMES.forEach((busDef) => {
+    BUS_NAMES.forEach((busName) => {
         TIMES.forEach((time) => {
             const busid = `B${String(idCounter).padStart(2, '0')}`;
             buses.push({
-                busname: busDef.name,
+                busname: busName,
                 busid: busid,
                 time: time,
                 availableSeats: this.generateSeatLayout(),

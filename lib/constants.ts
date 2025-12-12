@@ -1,11 +1,11 @@
 
 export const BUS_NAMES = [
-  { id: "bus_1", name: "Shyamoli Paribahan" },
-  { id: "bus_2", name: "Hanif Enterprise" },
-  { id: "bus_3", name: "Shohagh Paribahan" },
-  { id: "bus_4", name: "Evergreen Transport Ltd" },
-  { id: "bus_5", name: "Ena Transport (Pvt) ltd" },
-  { id: "bus_6", name: "Soudia Coach Service" },
+  "Zurich Ride",
+  "Geneva Ride",
+  "Bern Ride",
+  "Solo Ride",
+  "Stark Ride",
+  "Prime Ride",
 ];
 
 export const TIMES = ["8:00 am", "9:00 am", "5:00 pm", "6:00 pm"];
