@@ -92,7 +92,8 @@ export const BookingFormModal = ({
 								Seat
 							</p>
 							<p className="font-mono font-bold text-lg">
-								{rowIndex}-{colIndex}
+								{String.fromCharCode(65 + rowIndex)}
+								{colIndex + 1}
 							</p>
 						</div>
 						<div className="space-y-1">
