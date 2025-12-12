@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { ShieldCheck, Ticket } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 import {
 	Sidebar,
@@ -17,18 +18,19 @@ import {
 // Menu items.
 const items = [
 	{
-		title: "Admin",
-		url: "/admin",
-		icon: ShieldCheck,
-	},
-	{
 		title: "Booking",
 		url: "/",
 		icon: Ticket,
 	},
+	{
+		title: "Admin",
+		url: "/admin",
+		icon: ShieldCheck,
+	},
 ];
 
 export function AppSidebar() {
+	const pathname = usePathname();
 	return (
 		<Sidebar>
 			<SidebarContent>
@@ -37,7 +39,10 @@ export function AppSidebar() {
 						<SidebarMenu>
 							{items.map((item) => (
 								<SidebarMenuItem key={item.title}>
-									<SidebarMenuButton asChild>
+									<SidebarMenuButton
+										asChild
+										isActive={pathname === item.url}
+									>
 										<a href={item.url}>
 											<item.icon />
 											<span>{item.title}</span>
