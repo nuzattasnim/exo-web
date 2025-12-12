@@ -151,9 +151,9 @@ function SeatsContent({
 				<CardContent>
 					{currentBus ? (
 						<div className="flex flex-col gap-2">
-							<p className="text-sm text-muted-foreground mb-4">
+							{/* <p className="text-sm text-muted-foreground mb-4">
 								Bus ID: {currentBus.busid}
-							</p>
+							</p> */}
 
 							<div className="flex flex-col gap-2 p-4 bg-muted/20 rounded-lg">
 								<div className="text-center font-bold mb-2">
