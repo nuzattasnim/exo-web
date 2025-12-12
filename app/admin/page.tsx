@@ -12,7 +12,7 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRightIcon, BusFrontIcon } from "lucide-react";
+import { ArrowRightIcon, BusFrontIcon, Loader2 } from "lucide-react";
 
 import { BUS_NAMES, TIMES } from "@/lib/constants";
 
@@ -35,7 +35,12 @@ export default function AdminPage() {
 		router.push(`/?${queryParams.toString()}`);
 	};
 
-	if (isLoading) return <div className="p-10">Loading Admin Panel...</div>;
+	if (isLoading)
+		return (
+			<div className="flex justify-center items-center p-10 min-h-[50vh]">
+				<Loader2 className="h-8 w-8 animate-spin text-primary" />
+			</div>
+		);
 
 	return (
 		<div className="flex flex-col gap-8 p-10 max-w-[90%] w-[680px] mx-auto">

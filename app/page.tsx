@@ -13,7 +13,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookingFormModal } from "@/components/seats-ui/booking-form-modal";
 import BookedSeatModal from "@/components/seats-ui/booked-seat-modal";
-import { Armchair } from "lucide-react";
+import { Armchair, Loader2 } from "lucide-react";
 
 function SeatsContent({
 	readonly: propReadonly = false,
@@ -92,7 +92,11 @@ function SeatsContent({
 	};
 
 	if (isLoading) {
-		return <div className="p-10">Loading bus data...</div>;
+		return (
+			<div className="flex justify-center items-center p-10 min-h-[50vh]">
+				<Loader2 className="h-8 w-8 animate-spin text-primary" />
+			</div>
+		);
 	}
 
 	return (
@@ -262,7 +266,11 @@ function SeatsContent({
 export default function SeatsPage(props: { readonly?: boolean }) {
 	return (
 		<Suspense
-			fallback={<div className="p-10">Loading search params...</div>}
+			fallback={
+				<div className="flex justify-center items-center p-10 min-h-[50vh]">
+					<Loader2 className="h-8 w-8 animate-spin text-primary" />
+				</div>
+			}
 		>
 			<SeatsContent {...props} />
 		</Suspense>
