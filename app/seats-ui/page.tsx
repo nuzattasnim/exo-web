@@ -11,8 +11,8 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookingFormModal } from "./components/seats-ui/booking-form-modal";
-import BookedSeatModal from "./components/seats-ui/booked-seat-modal";
+import { BookingFormModal } from "@/components/seats-ui/booking-form-modal";
+import BookedSeatModal from "@/components/seats-ui/booked-seat-modal";
 
 export default function SeatsPage({
 	readonly: propReadonly = false,
