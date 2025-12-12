@@ -38,7 +38,7 @@ export default function AdminPage() {
 	if (isLoading) return <div className="p-10">Loading Admin Panel...</div>;
 
 	return (
-		<div className="flex flex-col gap-8 p-10 max-w-4xl mx-auto">
+		<div className="flex flex-col gap-8 p-10 max-w-[90%] w-[680px] mx-auto">
 			<div className="flex justify-between items-start">
 				<div className="space-y-2">
 					<h1 className="text-3xl font-bold tracking-tight">
