@@ -101,7 +101,7 @@ function SeatsContent({
 
 	return (
 		<div className="flex flex-col gap-6 p-10 items-center">
-			{!readonly && (
+			{!readonly ? (
 				<>
 					<h1 className="text-2xl font-bold">Book a seat</h1>
 					<div className="flex gap-4">
@@ -147,6 +147,13 @@ function SeatsContent({
 						</div>
 					</div>
 				</>
+			) : (
+				<div className="flex flex-col items-center gap-2">
+					<h1 className="text-2xl font-bold">{selectedBusName}</h1>
+					<p className="text-lg text-muted-foreground font-medium">
+						{selectedTime}
+					</p>
+				</div>
 			)}
 
 			<Card className="w-fit">
