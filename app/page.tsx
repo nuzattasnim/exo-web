@@ -95,20 +95,20 @@ function SeatsContent({
 	}
 
 	return (
-		<div className="flex flex-col gap-6 p-10">
+		<div className="flex flex-col gap-6 p-10 items-center">
 			{!readonly && (
 				<>
 					<h1 className="text-2xl font-bold">Search Buses</h1>
 					<div className="flex gap-4">
 						<div className="w-[200px]">
-							<label className="mb-2 block text-sm font-medium">
+							<label className="mb-2 block text-sm font-medium text-center">
 								Bus Name
 							</label>
 							<Select
 								value={selectedBusName}
 								onValueChange={setSelectedBusName}
 							>
-								<SelectTrigger>
+								<SelectTrigger className="w-full justify-between [&>span]:w-full [&>span]:text-center">
 									<SelectValue placeholder="Select Bus" />
 								</SelectTrigger>
 								<SelectContent>
@@ -121,14 +121,14 @@ function SeatsContent({
 							</Select>
 						</div>
 						<div className="w-[200px]">
-							<label className="mb-2 block text-sm font-medium">
+							<label className="mb-2 block text-sm font-medium text-center">
 								Time
 							</label>
 							<Select
 								value={selectedTime}
 								onValueChange={setSelectedTime}
 							>
-								<SelectTrigger>
+								<SelectTrigger className="w-full justify-between [&>span]:w-full [&>span]:text-center">
 									<SelectValue placeholder="Select Time" />
 								</SelectTrigger>
 								<SelectContent>
