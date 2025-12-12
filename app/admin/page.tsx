@@ -12,7 +12,7 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRightIcon, BusFrontIcon, RotateCwIcon } from "lucide-react";
+import { ArrowRightIcon, BusFrontIcon } from "lucide-react";
 
 import { BUS_NAMES, TIMES } from "@/lib/constants";
 
@@ -35,15 +35,6 @@ export default function AdminPage() {
 		router.push(`/?${queryParams.toString()}`);
 	};
 
-	const handleResetData = () => {
-		// Clear storage and reload to force generation of fresh full dataset
-		if (typeof window !== "undefined") {
-			localStorage.removeItem("exo_buses");
-			localStorage.removeItem("exo_booked_seats");
-			window.location.reload();
-		}
-	};
-
 	if (isLoading) return <div className="p-10">Loading Admin Panel...</div>;
 
 	return (
@@ -54,17 +45,9 @@ export default function AdminPage() {
 						Admin Panel
 					</h1>
 					<p className="text-muted-foreground">
-						Select a bus configuration to view its seat layout in
-						read-only mode.
+						Select a bus and schedule to view the booked seats.
 					</p>
 				</div>
-				<Button
-					variant="outline"
-					onClick={handleResetData}
-					className="gap-2"
-				>
-					<RotateCwIcon className="h-4 w-4" /> Reset Data
-				</Button>
 			</div>
 
 			<Card>
@@ -135,14 +118,6 @@ export default function AdminPage() {
 					)}
 				</CardContent>
 			</Card>
-
-			<div className="bg-muted/50 p-4 rounded-lg text-sm text-muted-foreground">
-				<p>
-					<strong>Note:</strong> Data is loaded from Local Storage. If
-					your options look incorrect or missing, click "Reset Data"
-					to regenerate fresh data.
-				</p>
-			</div>
 		</div>
 	);
 }

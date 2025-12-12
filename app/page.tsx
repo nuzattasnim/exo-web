@@ -13,6 +13,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookingFormModal } from "@/components/seats-ui/booking-form-modal";
 import BookedSeatModal from "@/components/seats-ui/booked-seat-modal";
+import { Armchair } from "lucide-react";
 
 function SeatsContent({
 	readonly: propReadonly = false,
@@ -145,19 +146,20 @@ function SeatsContent({
 			)}
 
 			<Card className="w-fit">
-				<CardHeader>
+				{/* <CardHeader>
 					<CardTitle>Seat Availability</CardTitle>
-				</CardHeader>
+				</CardHeader> */}
 				<CardContent>
 					{currentBus ? (
 						<div className="flex flex-col gap-2">
-							{/* <p className="text-sm text-muted-foreground mb-4">
-								Bus ID: {currentBus.busid}
-							</p> */}
-
 							<div className="flex flex-col gap-2 p-4 bg-muted/20 rounded-lg">
-								<div className="text-center font-bold mb-2">
-									DRIVER
+								<div className="flex justify-end mb-2">
+									<div
+										className="h-10 w-24 flex items-center justify-center rounded-md border border-gray-400 bg-gray-200 text-gray-600"
+										title="Driver"
+									>
+										<Armchair className="h-5 w-5" />
+									</div>
 								</div>
 								{currentBus.availableSeats.map(
 									(row, rowIndex) => (
