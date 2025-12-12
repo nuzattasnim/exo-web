@@ -10,6 +10,7 @@ import {
 	SidebarGroup,
 	SidebarGroupContent,
 	SidebarGroupLabel,
+	SidebarHeader,
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
@@ -33,6 +34,12 @@ export function AppSidebar() {
 	const pathname = usePathname();
 	return (
 		<Sidebar>
+			<SidebarHeader className="p-0 gap-0">
+				<div className="flex items-center justify-center h-16 py-4 font-bold text-xl">
+					Selise Bus
+				</div>
+				<img src="/bus.jpg" alt="Bus" className="w-full object-cover" />
+			</SidebarHeader>
 			<SidebarContent>
 				<SidebarGroup>
 					<SidebarGroupContent>
