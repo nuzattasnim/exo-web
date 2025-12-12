@@ -4,6 +4,9 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { SiteHeader } from "@/components/site-header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export function MainLayout({ children }: { children: React.ReactNode }) {
 	const pathname = usePathname();

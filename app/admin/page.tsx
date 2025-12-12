@@ -1,0 +1,148 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useBuses } from "@/hooks/use-buses";
+import { Button } from "@/components/ui/button";
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowRightIcon, BusFrontIcon, RotateCwIcon } from "lucide-react";
+
+import { BUS_NAMES, TIMES } from "@/lib/constants";
+
+export default function AdminPage() {
+	const router = useRouter();
+	const { isLoading } = useBuses();
+	const [selectedBusName, setSelectedBusName] = useState<string>("");
+	const [selectedTime, setSelectedTime] = useState<string>("");
+
+	const handleNavigate = () => {
+		if (!selectedBusName || !selectedTime) return;
+
+		// Navigate to seats-ui with query params
+		const queryParams = new URLSearchParams({
+			readonly: "true",
+			busName: selectedBusName,
+			time: selectedTime,
+		});
+
+		router.push(`/?${queryParams.toString()}`);
+	};
+
+	const handleResetData = () => {
+		// Clear storage and reload to force generation of fresh full dataset
+		if (typeof window !== "undefined") {
+			localStorage.removeItem("exo_buses");
+			localStorage.removeItem("exo_booked_seats");
+			window.location.reload();
+		}
+	};
+
+	if (isLoading) return <div className="p-10">Loading Admin Panel...</div>;
+
+	return (
+		<div className="flex flex-col gap-8 p-10 max-w-4xl mx-auto">
+			<div className="flex justify-between items-start">
+				<div className="space-y-2">
+					<h1 className="text-3xl font-bold tracking-tight">
+						Admin Panel
+					</h1>
+					<p className="text-muted-foreground">
+						Select a bus configuration to view its seat layout in
+						read-only mode.
+					</p>
+				</div>
+				<Button
+					variant="outline"
+					onClick={handleResetData}
+					className="gap-2"
+				>
+					<RotateCwIcon className="h-4 w-4" /> Reset Data
+				</Button>
+			</div>
+
+			<Card>
+				<CardHeader>
+					<CardTitle>Bus Configuration</CardTitle>
+				</CardHeader>
+				<CardContent className="flex flex-col gap-6">
+					<div className="grid grid-cols-2 gap-6">
+						<div className="space-y-2">
+							<label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+								Bus Name
+							</label>
+							<Select
+								value={selectedBusName}
+								onValueChange={setSelectedBusName}
+							>
+								<SelectTrigger>
+									<SelectValue placeholder="Select a Bus" />
+								</SelectTrigger>
+								<SelectContent>
+									{BUS_NAMES.map((bus) => (
+										<SelectItem
+											key={bus.id}
+											value={bus.name}
+										>
+											{bus.name}
+										</SelectItem>
+									))}
+								</SelectContent>
+							</Select>
+						</div>
+
+						<div className="space-y-2">
+							<label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+								Time
+							</label>
+							<Select
+								value={selectedTime}
+								onValueChange={setSelectedTime}
+								disabled={!selectedBusName}
+							>
+								<SelectTrigger>
+									<SelectValue placeholder="Select Time" />
+								</SelectTrigger>
+								<SelectContent>
+									{TIMES.map((time) => (
+										<SelectItem key={time} value={time}>
+											{time}
+										</SelectItem>
+									))}
+								</SelectContent>
+							</Select>
+						</div>
+					</div>
+
+					{selectedBusName && selectedTime && (
+						<div className="flex justify-end pt-4 border-t">
+							<Button
+								size="lg"
+								className="gap-2"
+								onClick={handleNavigate}
+							>
+								<BusFrontIcon className="h-5 w-5" />
+								View Seats of ({selectedBusName})
+								<ArrowRightIcon className="h-4 w-4 ml-2" />
+							</Button>
+						</div>
+					)}
+				</CardContent>
+			</Card>
+
+			<div className="bg-muted/50 p-4 rounded-lg text-sm text-muted-foreground">
+				<p>
+					<strong>Note:</strong> Data is loaded from Local Storage. If
+					your options look incorrect or missing, click "Reset Data"
+					to regenerate fresh data.
+				</p>
+			</div>
+		</div>
+	);
+}

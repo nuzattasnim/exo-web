@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Calendar, Home, Inbox, Search, Settings, Music } from "lucide-react";
+import { ShieldCheck, Ticket } from "lucide-react";
 
 import {
 	Sidebar,
@@ -17,34 +17,14 @@ import {
 // Menu items.
 const items = [
 	{
-		title: "Home",
+		title: "Admin",
+		url: "/admin",
+		icon: ShieldCheck,
+	},
+	{
+		title: "Booking",
 		url: "/",
-		icon: Home,
-	},
-	{
-		title: "Inbox",
-		url: "#",
-		icon: Inbox,
-	},
-	{
-		title: "Calendar",
-		url: "#",
-		icon: Calendar,
-	},
-	{
-		title: "Search",
-		url: "#",
-		icon: Search,
-	},
-	{
-		title: "Settings",
-		url: "#",
-		icon: Settings,
-	},
-	{
-		title: "K-Pop Songs",
-		url: "/kpop",
-		icon: Music,
+		icon: Ticket,
 	},
 ];
 
@@ -54,7 +34,7 @@ export function AppSidebar() {
 			<SidebarContent>
 				<SidebarGroup>
 					<SidebarGroupLabel className="text-base font-bold text-primary">
-						Application
+						Viewer Mode
 					</SidebarGroupLabel>
 					<SidebarGroupContent>
 						<SidebarMenu>
