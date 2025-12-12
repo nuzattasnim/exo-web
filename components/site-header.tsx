@@ -15,7 +15,7 @@ export function SiteHeader() {
 			<div className="flex items-center gap-2 px-4">
 				<SidebarTrigger className="-ml-1" />
 				<Separator orientation="vertical" className="mr-2 h-4" />
-				<span className="font-semibold">Bus Service</span>
+				<span className="font-semibold">Selise Bus</span>
 			</div>
 			<div className="ml-auto px-4"></div>
 		</header>

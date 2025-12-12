@@ -98,7 +98,7 @@ function SeatsContent({
 		<div className="flex flex-col gap-6 p-10 items-center">
 			{!readonly && (
 				<>
-					<h1 className="text-2xl font-bold">Search Buses</h1>
+					<h1 className="text-2xl font-bold">Book a seat</h1>
 					<div className="flex gap-4">
 						<div className="w-[200px]">
 							<label className="mb-2 block text-sm font-medium text-center">
