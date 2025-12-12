@@ -100,12 +100,12 @@ function SeatsContent({
 	}
 
 	return (
-		<div className="flex flex-col gap-6 p-10 items-center">
+		<div className="flex flex-col gap-6 p-4 md:p-10 items-center">
 			{!readonly ? (
 				<>
 					<h1 className="text-2xl font-bold">Book a seat</h1>
-					<div className="flex gap-4">
-						<div className="w-[200px]">
+					<div className="flex flex-col md:flex-row gap-4 w-full md:w-auto">
+						<div className="w-full md:w-[200px]">
 							<label className="mb-2 block text-sm font-medium text-center">
 								Bus Name
 							</label>
@@ -125,7 +125,7 @@ function SeatsContent({
 								</SelectContent>
 							</Select>
 						</div>
-						<div className="w-[200px]">
+						<div className="w-full md:w-[200px]">
 							<label className="mb-2 block text-sm font-medium text-center">
 								Time
 							</label>
@@ -169,8 +169,6 @@ function SeatsContent({
 										className="h-10 w-24 flex items-center justify-center rounded-md border border-gray-400 bg-gray-200 text-gray-600 text-3xl pb-1"
 										title="Driver"
 									>
-										{/* <LifeBuoy className="h-5 w-5" />
-										 */}
 										✇
 									</div>
 								</div>
@@ -236,6 +234,7 @@ function SeatsContent({
 				open={isBookingFormModalOpen}
 				setOpen={setIsBookingFormModalOpen}
 				busId={currentBus?.busid as string}
+				busName={currentBus?.busname as string}
 				rowIndex={selectedSeat.rowIndex}
 				colIndex={selectedSeat.colIndex}
 				time={currentBus?.time as string}

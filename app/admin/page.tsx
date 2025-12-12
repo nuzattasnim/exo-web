@@ -43,7 +43,7 @@ export default function AdminPage() {
 		);
 
 	return (
-		<div className="flex flex-col gap-8 p-10 max-w-[90%] w-[680px] mx-auto">
+		<div className="flex flex-col gap-8 p-4 md:p-10 w-full max-w-2xl mx-auto">
 			<div className="flex justify-between items-start">
 				<div className="space-y-2">
 					<h1 className="text-3xl font-bold tracking-tight">
@@ -60,7 +60,7 @@ export default function AdminPage() {
 					<CardTitle>Bus Configuration</CardTitle>
 				</CardHeader>
 				<CardContent className="flex flex-col gap-6">
-					<div className="grid grid-cols-2 gap-6">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 						<div className="space-y-2">
 							<label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
 								Bus Name
@@ -109,12 +109,14 @@ export default function AdminPage() {
 						<div className="flex justify-end pt-4 border-t">
 							<Button
 								size="lg"
-								className="gap-2"
+								className="gap-2 w-full md:w-auto"
 								onClick={handleNavigate}
 							>
-								<BusFrontIcon className="h-5 w-5" />
-								View Seats of ({selectedBusName})
-								<ArrowRightIcon className="h-4 w-4 ml-2" />
+								<BusFrontIcon className="h-5 w-5 shrink-0" />
+								<span className="truncate">
+									View Seats of ({selectedBusName})
+								</span>
+								<ArrowRightIcon className="h-4 w-4 ml-2 shrink-0" />
 							</Button>
 						</div>
 					)}

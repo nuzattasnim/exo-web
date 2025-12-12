@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useBuses } from "@/hooks/use-buses";
 import { DestinationList } from "@/lib/constants";
-import { toast } from "sonner";
+// import { toast } from "sonner";
 
 import {
 	Select,
@@ -20,12 +20,14 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { CalendarIcon, MapPinIcon, UserIcon } from "lucide-react";
+import { toast } from "sonner";
 
 interface BookingFormModalProps {
 	readonly: boolean;
 	open: boolean;
 	setOpen: (open: boolean) => void;
 	busId: string;
+	busName: string;
 	rowIndex: number;
 	colIndex: number;
 	time: string;
@@ -40,6 +42,7 @@ export const BookingFormModal = ({
 	open,
 	setOpen,
 	busId,
+	busName,
 	rowIndex,
 	colIndex,
 	time,
@@ -63,10 +66,9 @@ export const BookingFormModal = ({
 			destination,
 		});
 
-		toast.success("Seat booked successfully!", {
-			description: `Bus ${busId} - Seat ${rowIndex}-${colIndex} for ${username}`,
-			duration: 3000,
-		});
+		toast.success(
+			`Seat successfully booked for ${busName} to ${destination}`
+		);
 
 		setOpen(false);
 		setUsername(""); // Reset form
@@ -75,10 +77,10 @@ export const BookingFormModal = ({
 
 	return (
 		<Dialog open={open} onOpenChange={setOpen}>
-			<DialogContent className="sm:max-w-[500px] p-0 overflow-hidden">
-				<div className="grid grid-cols-[160px_1fr] h-full">
+			<DialogContent className="sm:max-w-[500px] p-0 overflow-hidden max-h-[90vh] flex flex-col">
+				<div className="flex flex-col sm:grid sm:grid-cols-[160px_1fr] h-full overflow-y-auto">
 					{/* Sidebar Summary */}
-					<div className="bg-primary/5 p-6 border-r flex flex-col gap-4">
+					<div className="bg-primary/5 p-4 sm:p-6 border-b sm:border-r sm:border-b-0 flex flex-row sm:flex-col gap-4 justify-between sm:justify-start shrink-0">
 						<div className="space-y-1">
 							<p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">
 								Bus ID
