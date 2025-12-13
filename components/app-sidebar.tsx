@@ -15,6 +15,8 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
+
 
 // Menu items.
 const items = [
@@ -50,10 +52,10 @@ export function AppSidebar() {
 										asChild
 										isActive={pathname === item.url}
 									>
-										<a href={item.url}>
+										<Link href={item.url}>
 											<item.icon />
 											<span>{item.title}</span>
-										</a>
+										</Link>
 									</SidebarMenuButton>
 								</SidebarMenuItem>
 							))}
