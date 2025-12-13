@@ -1,4 +1,4 @@
-# Selise Bus Booking System (Exo Web)
+# Selise Bus Booking System
 
 A modern, responsive bus seat booking application designed to provide a seamless travel experience. Built with the latest web technologies, including Next.js 16, React 19, and Tailwind CSS.
 
